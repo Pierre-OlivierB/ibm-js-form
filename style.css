@@ -63,3 +63,34 @@ input[type="submit"]:hover {
 input[type="checkbox"] {
   margin-right: 5px;
 }
+article {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+@media screen and (max-width: 600px) {
+  h2 {
+    font-size: 1em;
+  }
+}
+
+.not-valid {
+  cursor: default;
+  background-color: hsl(0, 0%, 95%);
+  pointer-events: none;
+}
+.not-valid ~ label {
+  color: hsl(0, 0%, 68%);
+}
+.not-valid:hover {
+  transform: none;
+  background-color: hsl(0, 0%, 95%);
+}
+.not-valid:checked {
+  cursor: pointer;
+  pointer-events: initial;
+}
+.not-valid:checked ~ label {
+  color: black;
+}
