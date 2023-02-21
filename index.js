@@ -104,11 +104,78 @@ const valueCrypt = document.getElementById("valueCrypt");
 // console.log(btnTestMdp);
 // console.log(valueCrypt);
 var inputMdpValue;
+var mdpPower = 0;
+var power;
+const regexMaj = /[A-Z]/g;
+const regexMin = /[a-z]/g;
+const regexNum = /[0-9]/g;
+const regexSym = /[$&+,:;=?@#|'<>.^*()%!-]/g;
+
+const regexLength = [26, 10, 22];
+
+var flagMaj = false;
+var flagMin = false;
+var flagNum = false;
+var flagSym = false;
 
 function verifyMdp() {
   inputMdpValue = valueCrypt.value;
   console.log(inputMdpValue);
   console.log("verification");
+  switchMdpValue(inputMdpValue);
+}
+
+function switchMdpValue(userMdp) {
+  for (let i = 0; i < userMdp.length; i++) {
+    if (!flagMaj && userMdp[i].match(regexMaj)) {
+      // console.log("maj");
+      flagMaj = true;
+    }
+    if (!flagMin && userMdp[i].match(regexMin)) {
+      // console.log("Min");
+      flagMin = true;
+    }
+    if (!flagNum && userMdp[i].match(regexNum)) {
+      // console.log("Num");
+      flagNum = true;
+    }
+    if (!flagSym && userMdp[i].match(regexSym)) {
+      // console.log("Sym");
+      flagSym = true;
+    }
+  }
+  console.log(userMdp.length);
+  // userMdp.length<=8?mdpPower=49:null;
+  // if(userMdp.length>8&&userMdp.length<=10&&){
+  //   mdpPower=65
+  // }
+}
+
+function powerAffectation(userMdp) {
+  let n = 0;
+  flagMaj ? (n = n + regexLength[0]) : null;
+  flagMin ? (n = n + regexLength[0]) : null;
+  flagNum ? (n = n + regexLength[1]) : null;
+  flagSym ? (n = n + regexLength[2]) : null;
+
+  let l = userMdp.length;
+}
+
+function strongMdp(stat) {
+  switch (stat) {
+    case "strong":
+      console.log("fort");
+      break;
+    case "medium":
+      console.log("moyen");
+      break;
+    case "low":
+      console.log("faible");
+      break;
+    default:
+      console.log("erreur");
+      break;
+  }
 }
 
 btnTestMdp.addEventListener("click", verifyMdp);
