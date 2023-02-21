@@ -96,3 +96,19 @@ btnCheckQuestions.addEventListener("click", () => {
   testScore();
   resetData();
 });
+
+// *----------------------------------------------------------
+// *Mot de passe
+const btnTestMdp = document.getElementById("testMdp");
+const valueCrypt = document.getElementById("valueCrypt");
+// console.log(btnTestMdp);
+// console.log(valueCrypt);
+var inputMdpValue;
+
+function verifyMdp() {
+  inputMdpValue = valueCrypt.value;
+  console.log(inputMdpValue);
+  console.log("verification");
+}
+
+btnTestMdp.addEventListener("click", verifyMdp);
