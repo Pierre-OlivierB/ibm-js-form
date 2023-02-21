@@ -1,12 +1,14 @@
+// *-------------------------------------------
+// *Choix multiple
 // console.log("test");
 // console.log(document.forms[0]);
 
 var inputsCheck;
 const testCheck = document.getElementById("testCheck");
-var inputs = document.querySelectorAll("input[type=checkbox]");
+var inputs = document.querySelectorAll("#first_card input[type=checkbox]");
 
 function testChecked() {
-  inputsCheck = document.querySelectorAll("input:checked");
+  inputsCheck = document.querySelectorAll("#first_card input:checked");
   // console.log(inputsCheck.length);
   if (inputsCheck.length > 0) {
     testCheck.classList.remove("not-valid");
@@ -36,3 +38,6 @@ inputs.forEach((e) => {
   e.addEventListener("click", testChecked);
 });
 testCheck.addEventListener("click", validateData);
+
+// !-----------------------------------------------
+// * Marquez des Points

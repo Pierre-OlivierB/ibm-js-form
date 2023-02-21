@@ -70,8 +70,15 @@ article {
   justify-content: space-evenly;
 }
 @media screen and (max-width: 600px) {
+  .content {
+    height: 1500px;
+  }
   h2 {
     font-size: 1em;
+  }
+  .card {
+    min-width: 260px;
+    height: 360px;
   }
 }
 
@@ -93,4 +100,22 @@ article {
 }
 .not-valid:checked ~ label {
   color: black;
+}
+/** Questionnaire partie 2*/
+#questions {
+  position: relative;
+  height: 80%;
+  margin-bottom: 20px;
+}
+#testCheckQuestions {
+  position: absolute;
+  bottom: -30px;
+  right: 0px;
+}
+#questions form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
