@@ -48,6 +48,21 @@ const answerGiven = document.querySelectorAll("#sec_card input[type=radio]");
 const validateAnswer = ["un marron", "un poussin", "plouf", "blanc", "42"];
 var score = 0;
 // console.log(btnCheckQuestions);
+const scorePlayer = [
+  "Essaye encore !",
+  "1 ? Pas mal, peut mieux faire.",
+  "2?!? C'est bien.",
+  "3 ? why not",
+  "4! Pas mal.",
+  "5, best score!",
+];
+function testScore() {
+  for (let i = 0; i < scorePlayer.length; i++) {
+    if (i == score) {
+      return alert(scorePlayer[score]);
+    }
+  }
+}
 function checkResponse() {
   if (answerChoosen.length == 5) {
     // console.log("faites vos jeux");
@@ -55,11 +70,11 @@ function checkResponse() {
       answerChoosen[i].value == validateAnswer[i] ? score++ : null;
     }
     alert("Votre score est de : " + score);
-    score = 0;
   }
 }
 function resetData() {
   // console.log(inputsCheck.length);
+  score = 0;
   btnCheckQuestions.classList.add("not-valid");
   answerChoosen.forEach((e) => {
     e.checked = false;
@@ -78,5 +93,6 @@ answerGiven.forEach((e) => {
 
 btnCheckQuestions.addEventListener("click", () => {
   checkResponse();
+  testScore();
   resetData();
 });
