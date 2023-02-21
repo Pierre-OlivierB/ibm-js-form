@@ -101,6 +101,8 @@ btnCheckQuestions.addEventListener("click", () => {
 // *Mot de passe
 const btnTestMdp = document.getElementById("testMdp");
 const valueCrypt = document.getElementById("valueCrypt");
+const verifSentence = document.querySelectorAll("#verifSentence p");
+// console.log(verifSentence);
 // console.log(btnTestMdp);
 // console.log(valueCrypt);
 var inputMdpValue;
@@ -120,9 +122,12 @@ var flagSym = false;
 
 function verifyMdp() {
   inputMdpValue = valueCrypt.value;
-  console.log(inputMdpValue);
-  console.log("verification");
+  // console.log(inputMdpValue);
+  // console.log("verification");
   switchMdpValue(inputMdpValue);
+  powerAffectation(inputMdpValue);
+  valueCrypt.value = "";
+  resetDisplay();
 }
 
 function switchMdpValue(userMdp) {
@@ -144,7 +149,7 @@ function switchMdpValue(userMdp) {
       flagSym = true;
     }
   }
-  console.log(userMdp.length);
+  // console.log(userMdp.length);
   // userMdp.length<=8?mdpPower=49:null;
   // if(userMdp.length>8&&userMdp.length<=10&&){
   //   mdpPower=65
@@ -157,25 +162,77 @@ function powerAffectation(userMdp) {
   flagMin ? (n = n + regexLength[0]) : null;
   flagNum ? (n = n + regexLength[1]) : null;
   flagSym ? (n = n + regexLength[2]) : null;
-
+  // console.log("n : " + n);
   let l = userMdp.length;
+  let result = Math.floor((l * Math.log(n)) / Math.log(2));
+
+  power = result;
+  strongMdp();
 }
 
-function strongMdp(stat) {
-  switch (stat) {
-    case "strong":
-      console.log("fort");
-      break;
-    case "medium":
-      console.log("moyen");
-      break;
-    case "low":
-      console.log("faible");
-      break;
-    default:
-      console.log("erreur");
-      break;
+function strongMdp() {
+  power < 64 ? (power = "Très faible") : null;
+  power >= 64 && power < 80 ? (power = "Faible") : null;
+  power >= 80 && power < 100 ? (power = "Moyen") : null;
+  power > 100 ? (power = "Fort") : null;
+
+  alert(`Votre mot de passe est : ${power}`);
+}
+function verifValues(el) {
+  // console.log(el.target.value);
+  switchMdpValue(el);
+  valueCrypt.value.length > 8
+    ? verifSentence[0].classList.remove("not-valid")
+    : verifSentence[0].classList.add("not-valid");
+  flagMin && flagMaj
+    ? verifSentence[1].classList.remove("not-valid")
+    : verifSentence[1].classList.add("not-valid");
+  flagNum
+    ? verifSentence[2].classList.remove("not-valid")
+    : verifSentence[2].classList.add("not-valid");
+  flagSym
+    ? verifSentence[3].classList.remove("not-valid")
+    : verifSentence[3].classList.add("not-valid");
+}
+
+function resetValueDetected() {
+  flagMaj = false;
+  flagMin = false;
+  flagNum = false;
+  flagSym = false;
+}
+function resetDisplay() {
+  resetValueDetected();
+  for (let i = 0; i < verifSentence.length; i++) {
+    verifSentence[i].classList.add("not-valid");
   }
 }
 
 btnTestMdp.addEventListener("click", verifyMdp);
+valueCrypt.addEventListener("input", (e) => {
+  // console.log(e.target.value);
+  resetValueDetected();
+  verifValues(e.target.value);
+  // console.log(e.target.value);
+});
+// window.addEventListener("keydown", (e) => {
+//   // console.log(e);
+//   // console.log("test");
+//   if (e.key == "Backspace") {
+//     // console.log("test");
+//     console.log(valueCrypt.value);
+//     let newValue = valueCrypt.value.toString();
+//     // console.log(typeof newValue);
+//     newValue = newValue.split("");
+//     // console.log(newValue);
+//     newValue = newValue.shift();
+//     console.log(newValue.length);
+//     // newValue.length == 1 ? (newValue = "") : null;
+//     newValue = [...newValue];
+//     resetValueDetected();
+//     verifValues(newValue[0]);
+
+//     // resetValueDetected();
+//     // verifValues(valueCrypt.value);
+//   }
+// });

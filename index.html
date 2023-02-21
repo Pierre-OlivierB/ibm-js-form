@@ -215,7 +215,19 @@
             <section>
               <form action="get">
                 <div class="line">
-                  <p>Vérification mot de passe :</p>
+                  <h4>Vérification mot de passe !</h4>
+                  <div id="verifSentence">
+                    <h5>Penser à :</h5>
+                    <p class="not-valid">
+                      Longueur plus grande que 8 <span></span>
+                    </p>
+                    <p class="not-valid">Présence min et maj <span></span></p>
+                    <p class="not-valid">Présence chiffre <span></span></p>
+                    <p class="not-valid">
+                      Présence caractère spéciaux
+                      <span></span>
+                    </p>
+                  </div>
                   <input type="password" id="valueCrypt" />
                 </div>
               </form>
