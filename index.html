@@ -98,21 +98,27 @@
           <h2>Questionnaire</h2>
           <article id="questions">
             <section>
-              <form action="">
+              <form action="get">
                 <div class="line">
                   <p>Qu'est ce qui est petit et marron ?</p>
-                  <input type="radio" name="radioCheck" class="check" /><label
-                    for="htmlCheck"
-                    >un marron</label
-                  >
-                  <input type="radio" name="radioCheck" class="check" /><label
-                    for="htmlCheck"
-                    >un pot</label
-                  >
-                  <input type="radio" name="radioCheck" class="check" /><label
-                    for="htmlCheck"
-                    >un soleil</label
-                  >
+                  <input
+                    type="radio"
+                    name="radioCheck"
+                    class="check"
+                    value="un marron"
+                  /><label for="htmlCheck">un marron</label>
+                  <input
+                    type="radio"
+                    name="radioCheck"
+                    class="check"
+                    value="un pot"
+                  /><label for="htmlCheck">un pot</label>
+                  <input
+                    type="radio"
+                    name="radioCheck"
+                    class="check"
+                    value="un soleil"
+                  /><label for="htmlCheck">un soleil</label>
                 </div>
                 <div class="line">
                   <p>Qu'est ce qui est petit et jaune ?</p>
@@ -120,16 +126,19 @@
                     type="radio"
                     name="radioCheckBird"
                     class="check"
+                    value="un poussin"
                   /><label for="htmlCheck">un poussin</label>
                   <input
                     type="radio"
                     name="radioCheckBird"
                     class="check"
+                    value="un pot"
                   /><label for="htmlCheck">un pot</label>
                   <input
                     type="radio"
                     name="radioCheckBird"
                     class="check"
+                    value="un soleil"
                   /><label for="htmlCheck">un soleil</label>
                 </div>
                 <div class="line">
@@ -138,16 +147,19 @@
                     type="radio"
                     name="cofeeRadioCheck"
                     class="check"
+                    value="plouf"
                   /><label for="htmlCheck">plouf</label>
                   <input
                     type="radio"
                     name="cofeeRadioCheck"
                     class="check"
+                    value="ouf"
                   /><label for="htmlCheck">ouf</label>
                   <input
                     type="radio"
                     name="cofeeRadioCheck"
                     class="check"
+                    value="hum"
                   /><label for="htmlCheck">hum</label>
                 </div>
                 <div class="line">
@@ -156,16 +168,19 @@
                     type="radio"
                     name="horseRadioCheck"
                     class="check"
+                    value="marron"
                   /><label for="htmlCheck">marron</label>
                   <input
                     type="radio"
                     name="horseRadioCheck"
                     class="check"
+                    value="blanc"
                   /><label for="htmlCheck">blanc</label>
                   <input
                     type="radio"
                     name="horseRadioCheck"
                     class="check"
+                    value="un soleil"
                   /><label for="htmlCheck">un soleil</label>
                 </div>
                 <div class="line">
@@ -174,21 +189,24 @@
                     type="radio"
                     name="answerRadioCheck"
                     class="check"
+                    value="pilule rouge"
                   /><label for="htmlCheck">pilule rouge</label>
                   <input
                     type="radio"
                     name="answerRadioCheck"
                     class="check"
+                    value="une réponse"
                   /><label for="htmlCheck">une réponse</label>
                   <input
                     type="radio"
                     name="answerRadioCheck"
                     class="check"
+                    value="42"
                   /><label for="htmlCheck">42</label>
                 </div>
               </form>
             </section>
-            <button id="testCheckQuestions" class="">Valider</button>
+            <button id="testCheckQuestions" class="not-valid">Valider</button>
           </article>
         </div>
         <div class="card" id="third_card"></div>

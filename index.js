@@ -41,3 +41,42 @@ testCheck.addEventListener("click", validateData);
 
 // !-----------------------------------------------
 // * Marquez des Points
+const btnCheckQuestions = document.getElementById("testCheckQuestions");
+var answerChoosen;
+const answerGiven = document.querySelectorAll("#sec_card input[type=radio]");
+// console.log(answerGiven);
+const validateAnswer = ["un marron", "un poussin", "plouf", "blanc", "42"];
+var score = 0;
+// console.log(btnCheckQuestions);
+function checkResponse() {
+  if (answerChoosen.length == 5) {
+    // console.log("faites vos jeux");
+    for (let i = 0; i < answerChoosen.length; i++) {
+      answerChoosen[i].value == validateAnswer[i] ? score++ : null;
+    }
+    alert("Votre score est de : " + score);
+    score = 0;
+  }
+}
+function resetData() {
+  // console.log(inputsCheck.length);
+  btnCheckQuestions.classList.add("not-valid");
+  answerChoosen.forEach((e) => {
+    e.checked = false;
+  });
+}
+
+answerGiven.forEach((e) => {
+  e.addEventListener("click", () => {
+    answerChoosen = document.querySelectorAll("#sec_card input:checked");
+    if (answerChoosen.length == 5) {
+      btnCheckQuestions.classList.remove("not-valid");
+      // console.log("faites vos jeux");
+    }
+  });
+});
+
+btnCheckQuestions.addEventListener("click", () => {
+  checkResponse();
+  resetData();
+});
