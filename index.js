@@ -7,7 +7,7 @@ var inputs = document.querySelectorAll("input[type=checkbox]");
 
 function testChecked() {
   inputsCheck = document.querySelectorAll("input:checked");
-  console.log(inputsCheck.length);
+  // console.log(inputsCheck.length);
   if (inputsCheck.length > 0) {
     testCheck.classList.remove("not-valid");
     inputs.forEach((e) => {
@@ -23,7 +23,16 @@ function testChecked() {
     });
   }
 }
+function validateData() {
+  // console.log(inputsCheck.length);
+  testCheck.classList.add("not-valid");
+  inputs.forEach((e) => {
+    e.checked = false;
+    e.classList.remove("not-valid");
+  });
+}
 
 inputs.forEach((e) => {
   e.addEventListener("click", testChecked);
 });
+testCheck.addEventListener("click", validateData);
